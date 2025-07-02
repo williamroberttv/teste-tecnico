@@ -1,0 +1,26 @@
+<div class="notificacao-container">
+  <label for="msgInput">Conteúdo da Notificação:</label>
+  <input
+    id="msgInput"
+    type="text"
+    [formControl]="conteudoMensagem"
+    placeholder="Digite a mensagem..."
+  />
+  <button (click)="handleNotification()" [disabled]="conteudoMensagem.invalid">
+    Enviar Notificação
+  </button>
+
+  <ul class="lista-notificacoes">
+    @for( item of notificacoes; track item.mensagemId) {
+    <li>
+      <div class="item-notificacao">
+        <span class="id"><strong>ID:</strong> {{ item.mensagemId }}</span>
+        <span class="status"><strong>Status:</strong> {{ item.status }}</span>
+        <p class="conteudo">
+          <strong>Mensagem:</strong> {{ item.conteudoMensagem }}
+        </p>
+      </div>
+    </li>
+    }
+  </ul>
+</div>

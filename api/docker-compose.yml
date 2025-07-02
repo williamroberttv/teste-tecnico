@@ -1,0 +1,36 @@
+services:
+
+  message-broker:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - local
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_VHOST=vhost
+    
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "${PORT:-3333}:3333"
+    networks:
+      - local
+    depends_on:
+      - message-broker
+    command: >
+      sh -c "npm run migration:run &&
+             npm run start:dev"
+    volumes:
+      - ../:/api  
+      - /api/node_modules  
+
+networks:
+  local:
+    driver: bridge
