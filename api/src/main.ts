@@ -14,10 +14,7 @@ async function bootstrap() {
   const globalPrefix = 'api';
   const app = await NestFactory.create(AppModule);
 
-  const queues = [
-    'fila.notificacao.entrada.WILLIAM',
-    'fila.notificacao.status.WILLIAM',
-  ];
+  const queues = ['fila.notificacao.entrada.WILLIAM'];
 
   for (const queue of queues) {
     app.connectMicroservice(rabbitmqQueueConfig(queue));
