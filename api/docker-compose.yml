@@ -24,12 +24,6 @@ services:
       - local
     depends_on:
       - message-broker
-    command: >
-      sh -c "npm run migration:run &&
-             npm run start:dev"
-    volumes:
-      - ../:/api  
-      - /api/node_modules  
 
 networks:
   local:
