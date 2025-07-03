@@ -17,7 +17,7 @@ O projeto já está configurado para rodar a API e o RabbitMQ via Docker Compose
 1. **Clone o repositório e acesse a pasta do projeto:**
 
    ```sh
-   git clone <url-do-repositorio>
+   git clone https://github.com/williamroberttv/teste-tecnico.git
    cd teste-tecnico/api
    ```
 
