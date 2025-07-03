@@ -6,8 +6,8 @@ import { NotificationService } from './notification.service';
 
 @Module({
   imports: [
-    rabbitmqClient('fila.notificacao.entrada.WILLIAM'),
-    rabbitmqClient('fila.notificacao.status.WILLIAM'),
+    rabbitmqClient('NOTIFICATION_ENTRADA', 'fila.notificacao.entrada.WILLIAM'),
+    rabbitmqClient('NOTIFICATION_STATUS', 'fila.notificacao.status.WILLIAM'),
   ],
   controllers: [NotificationController],
   providers: [NotificationService, StoreService],

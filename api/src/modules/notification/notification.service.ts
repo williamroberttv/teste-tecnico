@@ -7,9 +7,9 @@ import { CreateNotificationDto } from './dto/create-notification.dto';
 @Injectable()
 export class NotificationService {
   constructor(
-    @Inject('fila.notificacao.entrada.WILLIAM')
+    @Inject('NOTIFICATION_ENTRADA')
     private entradaClient: ClientProxy,
-    @Inject('fila.notificacao.status.WILLIAM')
+    @Inject('NOTIFICATION_STATUS')
     private statusClient: ClientProxy,
     private storeService: StoreService,
   ) {}

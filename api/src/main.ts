@@ -15,16 +15,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const queues = [
-    {
-      queue: 'fila.notificacao.entrada.WILLIAM',
-      prefetchCount: 1,
-      noAck: false,
-    },
-    {
-      queue: 'fila.notificacao.status.WILLIAM',
-      prefetchCount: 1,
-      noAck: false,
-    },
+    'fila.notificacao.entrada.WILLIAM',
+    'fila.notificacao.status.WILLIAM',
   ];
 
   for (const queue of queues) {

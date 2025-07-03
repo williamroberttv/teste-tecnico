@@ -5,7 +5,12 @@ import { AppService } from './app.service';
 import { NotificationModule } from './modules/notification/notification.module';
 
 @Module({
-  imports: [NotificationModule, ConfigModule.forRoot()],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    NotificationModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -21,14 +21,12 @@ export class NotificationController {
 
   @MessagePattern('fila.notificacao.entrada.WILLIAM')
   async handleStudentInvite(@Ctx() context: RmqContext): Promise<void> {
-    const channel = context.getChannelRef();
     try {
       const content = context.getMessage().content.toString('utf-8');
       const originalMessageData = JSON.parse(content);
       await this.notificationService.handleMessage(originalMessageData);
-      channel.ack(context.getMessage(), false);
-    } catch {
-      channel.nack(context.getMessage(), false, false);
+    } catch (error) {
+      console.error('Erro ao processar a mensagem de notificação', error);
     }
   }
 }
